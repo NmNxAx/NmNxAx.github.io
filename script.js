@@ -1,3 +1,4 @@
+alert("Привет мир");
 const C = document.querySelector("canvas"),
   $ = C.getContext("2d"),
   W = (C.width = window.innerWidth),
