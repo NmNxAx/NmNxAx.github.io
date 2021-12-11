@@ -1,5 +1,5 @@
 
-const C = document.querySelector("canvas"),
+const C = document.querySelector("div"),
   $ = C.getContext("2d"),
   W = (C.width = window.innerWidth),
   H = (C.height = window.innerHeight);
