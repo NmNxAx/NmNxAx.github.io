@@ -3,15 +3,14 @@
 <head>
  </head>
 
-<body style="margin: 0; background: #FFF; overflow: hidden;">
+<body style="margin: 0; background: #000; overflow: hidden;">
   <canvas></canvas>
 <scripts type="text/javascript>
  const C = document.querySelector("canvas"),
   $ = C.getContext("2d"),
   W = (C.width = window.innerWidth),
-  H = (C.height = window.innerHeight);
-
-const str = "ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ГРУППА ПОС БКП2ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ",
+  H = (C.height = window.innerHeight)+200;
+const str = "ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ",
   matrix = str.split("");
 
 let font = 11,
