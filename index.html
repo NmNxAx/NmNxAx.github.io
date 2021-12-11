@@ -8,35 +8,45 @@
               
 </body>
 <scripts type="text/javascript>
- const C = document.querySelector("canvas"),
-  $ = C.getContext("2d"),
-  W = (C.width = window.innerWidth),
-  H = (C.height = window.innerHeight)+200;
-const str = "ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ГРУППА ПОС БКП2 ",
-  matrix = str.split("");
+// Получаем Canvas
+const canvas =  document.getElementById('canv');
+const ctx =  canvas.getContext('2d');
 
-let font = 11,
-  col = W / font,
-  arr = [];
+// Задаем высоту и ширину
+const w =  canvas.width =  document.body.offsetWidth;
+const h =  canvas.height =  document.body.offsetHeight;
 
-for (let i = 0; i < col; i++) arr[i] = 1;
+// Рисуем черный прямоугольник той же высоты и ширины
+ctx.fillStyle = '#000';
+ctx.fillRect(0, 0, w, h);
+const cols = Math.floor(w / 20) + 1;
+const ypos = Array(cols).fill(0);
 
-function draw() {
-  $.fillStyle = "rgba(0,0,0,.05)";
-  $.fillRect(0, 0, W, H);
-  $.fillStyle = "#0f0";
-  $.font = font + "px system-ui";
-  for (let i = 0; i < arr.length; i++) {
-    let txt = matrix[Math.floor(Math.random() * matrix.length)];
-    $.fillText(txt, i * font, arr[i] * font);
-    if (arr[i] * font > H && Math.random() > 0.975) arr[i] = 0;
-    arr[i]++;
-  }
+function matrix () {
+  // рисуем черный прямоугольник поверх предедущего кадра
+  ctx.fillStyle = '#0001';
+  ctx.fillRect(0, 0, w, h);
+
+  // задаем зеленный цвет и фонт 
+  ctx.fillStyle = '#0f0';
+  ctx.font = '15pt monospace';
+
+  // выводим рандомные символы
+  ypos.forEach((y, ind) => {
+    const text = String.fromCharCode(Math.random() * 128);
+
+    const x = ind * 20;
+
+    ctx.fillText(text, x, y);
+
+    if (y > 100 + Math.random() * 10000) ypos[ind] = 0;
+
+    else ypos[ind] = y + 20;
+  });
 }
 
-setInterval(draw, 123);
-
-window.addEventListener("resize", () => location.reload());
+// рендеринг анимации в 20fps.
+setInterval(matrix, 50);
 </script>                                            
 
 </html>
